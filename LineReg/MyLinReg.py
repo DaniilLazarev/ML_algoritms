@@ -85,9 +85,12 @@ class MyLineReg:
         if verbose:
             print("Training complete.")
     
+    
+    
     def get_coef(self):
         return self.weights[1:]  # Возвращаем веса, исключая bias
-
+    
+    
     def predict(self, X: pd.DataFrame):
         X = pd.concat([pd.DataFrame({0: [1] * len(X)}), X], axis=1)
         return X.dot(self.weights)
