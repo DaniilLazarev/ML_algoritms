@@ -4,9 +4,13 @@ from sklearn.metrics import roc_auc_score
 
 
 
-
+# добавить регулизацию 
 class MyLogReg:
-    def __init__(self, n_iter=10, learning_rate=0.1, weights=None, metric=None):
+    def __init__(self, n_iter=10, 
+                 learning_rate=0.1, 
+                 weights=None, 
+                 metric=None):
+        
         self.n_iter = n_iter
         self.learning_rate = learning_rate
         self.weights = weights
@@ -66,7 +70,7 @@ class MyLogReg:
         fn = np.sum((y == 1) & (y_pred == 0))
         return tp / (tp + fn) if (tp + fn) > 0 else 0
 
-    def f1(self, y, y_pred):
+    def f1(self, y, y_pred) -> float:
         prec = self.precision(y, y_pred)
         rec = self.recall(y, y_pred)
         return 2 * (prec * rec) / (prec + rec) if (prec + rec) > 0 else 0
